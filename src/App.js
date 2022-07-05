@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { ChakraProvider } from '@chakra-ui/react'
+import Login from './pages/LoginPage'
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate
+} from 'react-router-dom'
+import Equipments from './pages/Equipments'
+import MapPage from './pages/MapPage'
+import AlarmsPage from './pages/AlarmsPage'
+import WithNav from './components/Layout/WithNav'
+import WithoutNav from './components/Layout/WithoutNav'
 
-function App() {
+function App () {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <ChakraProvider>
+      <Router>
+        <Routes>
+          <Route element={<WithoutNav />}>
+            <Route path='/' element={<Navigate replace to='/login' />} />
+            <Route path='login' element={<Login />} />
+          </Route>
+
+          <Route element={<WithNav />}>
+            <Route path='equipments' element={<Equipments />}></Route>
+            <Route path='map' element={<MapPage />}></Route>
+            <Route path='alarms' element={<AlarmsPage />}></Route>
+          </Route>
+        </Routes>
+      </Router>
+    </ChakraProvider>
+  )
 }
 
-export default App;
+export default App

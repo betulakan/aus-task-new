@@ -1,0 +1,103 @@
+ {
+    "devices": [
+    {
+        "id":1,
+        "deviceName": "Cihaz-1",
+        "deviceIP": "236.135.126.129",
+        "equipmentId": "1",
+        "latitude": 40.804119, 
+        "longitude": 29.361544,
+        "postingDate": "2022-06-21T11:14:32.067"
+    },
+    {
+        "id":2,
+        "deviceName": "Cihaz-2",
+        "deviceIP": "106.175.202.185",
+        "equipmentId": "2",
+        "latitude":41.107594, 
+        "longitude": 29.027807,
+        "postingDate": "2022-06-21T11:14:32.067"
+    },
+    {
+        "id":3,
+        "deviceName": "Cihaz-3",
+        "deviceIP": "217.37.50.190",
+        "equipmentId": "3",
+        "latitude":41.040904, 
+        "longitude": 29.005520,
+        "postingDate": "2022-06-23T11:14:32.067"
+    },
+    {
+        "id":4,
+        "deviceName": "Cihaz-4",
+        "deviceIP": "142.62.16.123",
+        "equipmentId": "4",
+        "latitude":41.002740,  
+        "longitude": 29.071182,
+        "postingDate": "2022-06-23T11:14:32.067"
+    },
+    {
+        "id":5,
+        "deviceName": "Cihaz-5",
+        "deviceIP": "137.220.37.189",
+        "equipmentId": "5",
+        "latitude":41.006123,  
+        "longitude": 29.145933,
+        "postingDate": "2022-06-23T11:14:32.067"
+    },
+    {
+        "id":6,
+        "deviceName": "Cihaz-6",
+        "deviceIP": "230.23.35.28",
+        "equipmentId": "6",
+        "latitude":41.032284, 
+        "longitude": 29.095829,
+        "postingDate": "2022-07-01"
+    },
+    {
+        "id":7,
+        "deviceName": "Cihaz-7",
+        "deviceIP": "212.232.166.21",
+        "equipmentId": "7",
+        "latitude": 40.969659, 
+        "longitude": 29.225171,
+        "postingDate": "2022-06-23T11:14:32.067"
+    },
+    {
+        "id":8,
+        "deviceName": "Cihaz-3",
+        "deviceIP": "188.145.159.42",
+        "equipmentId": "3",
+        "latitude": 41.000326,  
+        "longitude": 29.261916,
+        "postingDate": "2022-06-23T11:14:32.067"
+    },
+    {
+        "id":9,
+        "deviceName": "Cihaz-7",
+        "deviceIP": "98.134.249.64",
+        "equipmentId": "7",
+        "latitude": 40.893852, 
+        "longitude": 29.280870,
+        "postingDate": "2022-06-23T11:14:32.067"
+    },
+    {
+        "id":10,
+        "deviceName": "Cihaz-1",
+        "deviceIP": "75.97.234.153",
+        "equipmentId": "1",
+        "latitude": 40.853550,  
+        "longitude": 29.345850,
+        "postingDate": "2022-06-23T11:14:32.067"
+    },
+    {
+        "id":11,
+        "deviceName": "Cihaz-2",
+        "deviceIP": "106.175.202.185",
+        "equipmentId": "2",
+        "latitude": 41.026043,  
+        "longitude": 29.123200,
+        "postingDate": "2022-06-23T11:14:32.067"
+    }
+]
+}

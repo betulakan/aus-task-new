@@ -1,0 +1,93 @@
+/* .navbar{
+    background-color: #242b2c;
+    height: 80px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+} */
+
+.nav-menu{
+    background-color: black;
+    width: 12%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    transition: 850ms;
+}
+
+.equipment{
+    width:fit-content;
+    height: 100vh;
+    margin-left: 230px;
+    top:0;
+}
+
+.my-select{
+    padding-left: 20px;
+}
+
+.select{
+    margin-left: 250px;
+    z-index: 2;
+    
+}
+
+.mapPage{
+   
+    margin-left: 12%;
+    
+}
+.menu-bars {
+    margin-left: 2rem;
+    font-size: 2rem;
+    background: none;
+  }
+
+.nav-menu.active{
+    left: 0;
+    transition: 350ms;
+}
+
+.nav-text{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 8px 0px 8px 16px;
+    list-style: none;
+    height: 60px;
+}
+
+.nav-text a{
+    text-decoration: none;
+    color: #FDDA0D;
+    font-size: 18px;
+    width: 95%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    border-radius: 4px;
+}
+
+.nav-text a:hover{
+    background-color: slategrey;
+}
+
+.nav-menu-items {
+    width: 100%;
+  }
+
+.navbar-toggle{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+span{
+    margin-left: 16px;
+}
