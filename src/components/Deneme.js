@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
@@ -22,17 +22,17 @@ const titleStyle = {
     color: "white",
 };
 
-
-export default function MapSelect() {
+export default function Deneme() {
     const position = [38.9637, 35.2433]
     let url = 'http://localhost:3001/devices'
     let newUrl = 'api/Gnss/GetPositions?startDateTime=2022-06-01%2000%3A00%3A00&finishDateTime=2022-07-01%2000%3A00%3A00'
 
     const [data, setData] = useState([]);
-    const [selectValue, setSelectValue] = useState([]);
+    const [selectValue, setSelectValue] = useState(null);
     const [startDate, setStartDate] = useState(null);
     const [endDate, setEndDate] = useState(null);
-    
+
+
     function GetIcon(equipmentId) {
         return L.icon({
             iconUrl: require("../icons/img/" + equipmentId + ".png"),
@@ -56,20 +56,27 @@ export default function MapSelect() {
         getData()
     }, []);
 
-    const selectedEq = (e) => {
-        const selectedEquipment = e.target.value;
-        setSelectValue(selectedEquipment)
-    }
+    // const selectedEq = (e) => {
+    //     const selectedEquipment = e.target.value;
+    //     setSelectValue(selectedEquipment)
+    // }
 
-    const options = [];
-    data.map(item => {
-        if (options.indexOf(item.equipmentId) === -1) {
-            options.push(item.equipmentId)
-        }
-    })
+
+    // const optionss = [
+    //     data.map(item => {
+    //         if (options.indexOf(item.equipmentId) === -1) {
+    //             options.push(item.equipmentId)
+    //             console.log(options)
+    //         }
+    //     })
+    // ];
+
+    const secenekler = data.map((item) => ({
+        value: item.equipmentId,
+        label: item.equipmentId
+    }))
 
     function getRequestedDevice() {
-        
         data.map(item => {
             console.log("####");
             if ((item.equipmentId === selectValue) &&
@@ -84,8 +91,23 @@ export default function MapSelect() {
         })
     }
 
-    return (
+    const mapRef = useRef(null)
+    const markerRef = useRef(null)
+    
 
+    const denemeYapiyorum = () => {
+        const map = mapRef.current
+        if (!map) {
+            return;
+        }
+
+        const marker = markerRef.current
+        if (marker) {
+            marker.openPopup();
+        }
+    }
+
+    return (
         <Flex direction="column" bg={"#242b2c"}>
             <Wrap align="stretch"
                 justify="stretch"
@@ -95,23 +117,23 @@ export default function MapSelect() {
                 <HStack borderRadius="sm"
                     h={""}
                     p={"2"}
-
                     alignItems="center"
                     justify="center">
 
                     <VStack spacing={0}>
                         <Text {...titleStyle}>Equipment ID</Text>
                         <Select
-                            onChange={selectedEq}
                             value={selectValue}
+                            onChange={(e) => setSelectValue(e.currentTarget.value)}
                             width="130px"
                             bg="white"
-                            placeholder='Select a device'>
+                            placeholder='Select a device'
+                        >
                             {data.map(item => (
                                 <option key={item.id}>{item.equipmentId}</option>
                             ))}
-                            onChange={(e) => setSelectValue(e.currentTarget.value)}
                         </Select>
+
                     </VStack>
 
                     <VStack spacing={0}>
@@ -152,28 +174,37 @@ export default function MapSelect() {
                         <Button
                             colorScheme='yellow'
                             variant='solid'
-                            onClick={() => getRequestedDevice}>Get</Button>
+                            onClick={denemeYapiyorum}>Get</Button>
                     </VStack>
                 </HStack>
 
             </Wrap>
             <Box zIndex={1}>
                 <MapContainer
+                    whenCreated={(map) => {
+                        mapRef.current = map;
+                    }}
+
                     center={position}
                     zoom={7}
                     scrollWheelZoom={true}
                     style={{ width: '100%', height: '95vh' }}>
                     <TileLayer
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                        url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'/>
+                        url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
 
-                
+                    />
+
+                    <Marker ref={markerRef}  position={position} >
+                        <Popup>hello</Popup>
+                    </Marker>
+
                     {/* {data.map(item => {
                         if ((item.equipmentId === selectValue) &&
                             ((JSON.parse(JSON.stringify(startDate)) <= item.postingDate)
-                                && (item.postingDate <= JSON.parse(JSON.stringify(endDate)))) )
+                                && (item.postingDate <= JSON.parse(JSON.stringify(endDate)))))
                             return (
-                                <Marker key={item.id} position={[item.latitude, item.longitude]} icon={GetIcon(item.equipmentId)}>
+                                <Marker ref={markerRef} key={item.id} position={[item.latitude, item.longitude]} icon={GetIcon(item.equipmentId)}>
                                     <Popup>{item.equipmentId}</Popup>
                                 </Marker>
                             );
