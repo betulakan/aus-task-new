@@ -1,3 +1,5 @@
-cd src/res
+JSON Server başlatmak için
 
-json-server --watch data.json --port 3001
+1) cd src/res
+
+2) json-server --watch data.json --port 3001
